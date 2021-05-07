@@ -1,12 +1,12 @@
 import pyttsx3
 from tkinter import *
-from tkinter import filedialog
+# from tkinter.messagebox import *
 
 class note():
 
 	def __init__(self):
 		self.root = Tk()
-		self.root.iconbitmap('icons8_Calculator.ico')
+		self.root.iconbitmap('icons8_Add_User_Male.ico')
 		self.root.geometry('800x450')
 		self.root.title('Notepad')
 		self.mainframe = Frame(self.root)
@@ -20,9 +20,12 @@ class note():
 
 	def speak(self):
 		self.text = self.pad.get(0.0, END)
-		self.engine = pyttsx3.init()
-		self.engine.say(self.text)
-		self.engine.runAndWait()
+		if self.text == '':
+			messagebox.showinfo('Error Message', 'You must type something')
+		else:
+			self.engine = pyttsx3.init()
+			self.engine.say(self.text)
+			self.engine.runAndWait()
 
 	def save(self):
 		self.smart = filedialog.asksaveasfile(mode='w', defaultextension='.mike', filetypes=[('Mike File', '*.mike')])
