@@ -1,5 +1,6 @@
 import pyttsx3
 from tkinter import *
+from tkinter import filedialog
 # from tkinter.messagebox import *
 
 class note():
@@ -39,6 +40,7 @@ class note():
 		self.openFile = filedialog.askopenfile(mode='r', defaultextension='.mike')
 		if self.openFile is None:
 			return
+		self.pad.delete(0.0, END)
 		self.me = self.openFile.read()
 		self.pad.insert(0.0, self.me)
 		self.openFile.close()
